@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dileepa Madushan | DILU BEATS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+    /* Animated Dots Background */
+    .dots-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    nav {
+      background: rgba(0,0,0,0.85);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      border-bottom: 1px solid #222;
+      z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      color: #ffe600;
+      border-bottom: 2px solid #ffe600;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 40px 0 40px;
+      position: relative;
+      z-index: 1;
+      min-height: 80vh;
+    }
+    .left {
+      max-width: 600px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+    }
+    .artist-name {
+      font-size: 3.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .stage-name {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #ffe600;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+    .desc {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 28px;
+      justify-content: flex-start;
+    }
+    .btn, .btn-outline {
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+    }
+    .btn {
+      background: #fff;
+      color: #111;
+      border: none;
+      padding: 8px 18px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 8px #0004;
+      min-width: 110px;
+      min-height: 32px;
+    }
+    .btn i {
+      margin-right: 7px;
+      font-size: 1em;
+    }
+    .btn:hover {
+      transform: scale(1.07) translateY(-6px);
+      box-shadow: 0 0 24px 0 #fff, 0 0 8px 2px #fff8, 0 0 32px 4px #fff4, 0 2px 8px #000a;
+      z-index: 2;
+    }
+    .btn-outline {
+      background: #111;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .btn-outline:hover {
+      transform: scale(1.07) translateY(-6px);
+      box-shadow: 0 0 24px 0 #fff, 0 0 8px 2px #fff8, 0 0 32px 4px #fff4, 0 2px 8px #000a;
+      z-index: 2;
+    }
+    .socials {
+      margin-top: -16px;
+      display: flex;
+      gap: 28px;
+      justify-content: flex-start;
+    }
+    .socials a {
+      color: #e0e0e0;
+      font-size: 1.25rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover {
+      color: #ffe600;
+    }
+    .right {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+      min-width: 300px;
+      z-index: 1;
+      margin-top: 10px;
+      margin-right: 0;
+      margin-left: 460px;
+      position: relative;
+      max-width: 700px;
+      width: 100%;
+    }
+    img, .popular-card, .image-pro-wrapper, .about-img-box, .shows-card, .contact-card {
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+    }
+    img:hover, .popular-card:hover, .image-pro-wrapper:hover, .about-img-box:hover, .shows-card:hover, .contact-card:hover {
+      transform: scale(1.07) translateY(-10px);
+      box-shadow: 0 0 32px 0 #fff, 0 0 12px 4px #fff8, 0 0 64px 8px #fff4, 0 8px 32px #000a;
+      z-index: 2;
+    }
+    .image-pro-wrapper, .image-pro-wrapper img {
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+    }
+    .image-pro-wrapper:hover, .image-pro-wrapper img:hover {
+      transform: scale(1.07) translateY(-10px);
+      box-shadow: 0 0 32px 0 #fff, 0 0 12px 4px #fff8, 0 0 64px 8px #fff4, 0 8px 32px #000a;
+      z-index: 2;
+    }
+    .right img {
+      max-width: 380px;
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      background: none;
+      box-shadow: none;
+      display: block;
+      position: relative;
+      z-index: 2;
+      transition: filter 0.3s;
+    }
+    .wave {
+      margin: -90px auto 0 auto;
+      width: 140px;
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 6px;
+      z-index: 2;
+      position: relative;
+    }
+    .bar {
+      width: 14px;
+      background: #ffe600;
+      border-radius: 4px;
+      animation: waveMove 1.2s infinite;
+      height: 24px;
+    }
+    .bar:nth-child(1) { animation-delay: 0s; }
+    .bar:nth-child(2) { animation-delay: 0.12s; }
+    .bar:nth-child(3) { animation-delay: 0.24s; }
+    .bar:nth-child(4) { animation-delay: 0.36s; }
+    .bar:nth-child(5) { animation-delay: 0.48s; }
+    .bar:nth-child(6) { animation-delay: 0.36s; }
+    .bar:nth-child(7) { animation-delay: 0.24s; }
+    .bar:nth-child(8) { animation-delay: 0.12s; }
+    .bar:nth-child(9) { animation-delay: 0s; }
+    @keyframes waveMove {
+      0%, 100% { height: 24px; }
+      20% { height: 36px; }
+      40% { height: 48px; }
+      60% { height: 36px; }
+      80% { height: 24px; }
+    }
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .container { flex-direction: column; align-items: flex-start; padding: 40px 20px 0 20px;}
+      .right { margin-top: 30px; justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 0 10px;}
+      .container { padding: 30px 10px 0 10px; flex-direction: column;}
+      .right img { max-width: 100%; }
+      .image-pro-wrapper { max-width: 100%; }
+      .left { max-width: 100%; }
+    }
+    /* Section styles */
+    section, #home, #about {
+      padding: 80px 0;
+      scroll-margin-top: 80px;
+      min-height: unset;
+      height: unset;
+      box-sizing: border-box;
+      overflow: visible;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+    .shows-list, .songs-list {
+      list-style: none;
+      padding: 0;
+      color: #fff;
+    }
+    .shows-list li, .songs-list li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+    .shows-list li span, .songs-list li span {
+      color: #ffe600;
+      font-weight: bold;
+    }
+    /* More About Me Section Styles */
+    #about {
+      padding: 0;
+    }
+    .about-scroll {
+      padding-top: 0;
+      height: unset;
+      overflow-y: visible;
+    }
+    .about-main-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+      gap: 48px;
+      margin: 0;
+      padding: 40px 32px 40px 32px;
+      box-sizing: border-box;
+    }
+    .about-img-box {
+      background: #181818;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px #000a;
+      overflow: hidden;
+      width: 400px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1);
+    }
+    .about-img-box::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: #181818;
+      z-index: 1;
+    }
+    .about-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+      position: relative;
+      z-index: 2;
+      background: #181818;
+      opacity: 1;
+    }
+    .about-main-content {
+      flex: 1;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+    .about-main-title {
+      font-size: 2.6rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+    .about-main-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 5px;
+      background: #ffe600;
+      border-radius: 3px;
+      margin-top: 8px;
+    }
+    .about-main-intro {
+      margin: 24px 0 18px 0;
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 500;
+    }
+    .about-main-intro .about-main-highlight {
+      color: #ffe600;
+      font-weight: 600;
+      font-size: 1.08rem;
+    }
+    .about-main-desc {
+      margin-bottom: 24px;
+      color: #fff;
+      font-size: 1.08rem;
+    }
+    .about-main-stats {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 18px;
+    }
+    .about-main-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .about-main-stat .stat-number {
+      color: #ffe600;
+      font-size: 2.1rem;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+    .about-main-stat .stat-label {
+      color: #fff;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    .about-main-body, .about-main-footer {
+      text-align: left;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    .about-main-body {
+      margin-top: 18px;
+      color: #ccc;
+      font-size: 1.08rem;
+    }
+    .about-main-footer {
+      margin-top: 38px;
+      color: #fff;
+      font-size: 1.02rem;
+      text-align: center;
+      width: 100%;
+      opacity: 0.92;
+    }
+    @media (max-width: 900px) {
+      .about-main-container { flex-direction: column; align-items: center; gap: 32px; padding: 32px 8px; }
+      .about-img-box { min-width: 220px; max-width: 320px; height: 260px; }
+      .about-main-content { max-width: 100%; }
+    }
+    /* Remove scroll-margin-top for new fullpage scroll */
+    section, #about {
+      scroll-margin-top: 0;
+    }
+    /* Remove extra padding from .container for #home */
+    .container#home {
+      padding: 0 40px 0 40px;
+      height: unset;
+      align-items: center;
+    }
+    /* Responsive fix for .container#home */
+    @media (max-width: 1100px) {
+      .container#home { flex-direction: column; align-items: flex-start; padding: 0 20px 0 20px; }
+    }
+    @media (max-width: 700px) {
+      .container#home { padding: 0 10px 0 10px; flex-direction: column; }
+    }
+    .popular-title {
+      font-size: 2.2rem;
+      color: #ccc;
+      font-weight: bold;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      justify-content: flex-start;
+    }
+    .popular-title .fa-music {
+      color: #ffe600;
+      font-size: 2.1rem;
+      margin-right: 10px;
+    }
+    .popular-underline {
+      display: block;
+      height: 5px;
+      width: 60px;
+      background: #ffe600;
+      border-radius: 3px;
+      margin: 8px auto 0 auto;
+    }
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-items: center;
+    }
+    .popular-card {
+      background: #181818;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #000a;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+      cursor: pointer;
+      min-width: 280px;
+      max-width: 340px;
+      width: 100%;
+      position: relative;
+    }
+    .popular-card:hover {
+      transform: scale(1.07) translateY(-10px);
+      box-shadow: 0 0 32px 0 #fff, 0 0 12px 4px #fff8, 0 0 64px 8px #fff4, 0 8px 32px #000a;
+      z-index: 2;
+    }
+    .popular-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+      display: block;
+      box-shadow: none;
+    }
+    .popular-info {
+      padding: 18px 16px 16px 16px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: none;
+    }
+    .popular-title-main {
+      font-size: 1.08rem;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .popular-title-sub {
+      color: #ffe600;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+    .popular-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      justify-content: center;
+      width: 100%;
+    }
+    .popular-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #fff;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px #fff4;
+    }
+    .popular-icon i {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+    .popular-icon:active i,
+    .popular-icon:focus i,
+    .popular-icon:hover i {
+      text-decoration: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+    .popular-icon-yt { color: #ff2a2a; background: #111; }
+    .popular-icon-yt:hover { background: #ff2a2a; color: #fff; }
+    .popular-icon-spotify { color: #1db954; background: #111; }
+    .popular-icon-spotify:hover { background: #1db954; color: #fff; }
+    .popular-icon-apple { color: #fff; background: #111; }
+    .popular-icon-apple:hover { background: #ffe600; color: #111; }
+    @media (max-width: 1100px) {
+      .popular-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .popular-grid { grid-template-columns: 1fr; gap: 22px; }
+      .popular-card { min-width: 0; max-width: 100%; }
+    }
+    /* Pop-up animation */
+    .popular-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1);
+    }
+    .popular-animate.popular-inview {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      justify-items: center;
+    }
+    .shows-card {
+      background: #181818;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #000a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+      cursor: pointer;
+      min-width: 220px;
+      max-width: 340px;
+      width: 100%;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    .shows-card:hover {
+      transform: scale(1.07) translateY(-10px);
+      box-shadow: 0 0 32px 0 #fff, 0 0 12px 4px #fff8, 0 0 64px 8px #fff4, 0 8px 32px #000a;
+      z-index: 2;
+    }
+    .shows-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), opacity 0.7s;
+    }
+    @media (max-width: 900px) {
+      .shows-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+      .shows-card { min-width: 120px; max-width: 100%; }
+    }
+    /* Follow On Section */
+    .follow-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 64px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 70px auto 90px auto;
+    }
+    .follow-card {
+      flex: 1 1 0;
+      min-width: 180px;
+      max-width: 240px;
+      width: 100%;
+      background: #181818;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px #0006;
+      padding: 36px 18px 28px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid #fff;
+      box-shadow: 0 0 16px 0 #fff4;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), border 0.2s, color 0.2s;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .follow-card i {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      transition: color 0.2s;
+    }
+    .follow-spotify i { color: #1db954; }
+    .follow-youtube i { color: #ff2a2a; }
+    .follow-apple i { color: #fff; }
+    .follow-instagram i { color: #e1306c; }
+    .follow-facebook i { color: #1877f3; }
+    .follow-title {
+      font-size: 1.18rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .follow-desc {
+      font-size: 0.98rem;
+      color: #ccc;
+      font-weight: 400;
+    }
+    .follow-card:hover {
+      transform: scale(1.07) translateY(-8px);
+      box-shadow: 0 0 32px 0 #fff, 0 0 12px 4px #fff8, 0 0 64px 8px #fff4, 0 8px 32px #000a;
+      z-index: 2;
+      color: #fff;
+      border-color: #fff;
+    }
+    .follow-card:hover i {
+      color: #fff !important;
+    }
+    @media (max-width: 1100px) {
+      .follow-grid { flex-wrap: wrap; }
+      .follow-card { flex: 1 1 45%; }
+    }
+    @media (max-width: 700px) {
+      .follow-grid { flex-direction: column; gap: 18px; }
+      .follow-card { min-width: 100px; max-width: 100%; padding: 24px 8px 18px 8px; }
+    }
+    .contact-card {
+      background: #181818;
+      border: 2.5px solid #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #fff4;
+      max-width: 420px;
+      margin: 48px auto 0 auto;
+      padding: 44px 32px 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1);
+    }
+    .contact-icon {
+      font-size: 3.2rem;
+      color: #ffe600;
+      margin-bottom: 18px;
+    }
+    .contact-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .contact-desc {
+      font-size: 1.05rem;
+      color: #ccc;
+      margin-bottom: 28px;
+    }
+    .contact-email {
+      display: inline-block;
+      background: none;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 24px;
+      padding: 8px 28px;
+      font-size: 1.08rem;
+      font-weight: 500;
+      margin-bottom: 28px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .contact-email:hover {
+      background: #fff;
+      color: #181818;
+    }
+    .contact-socials {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .contact-social {
+      color: #fff;
+      background: #181818;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px #fff4;
+      text-decoration: none;
+    }
+    .contact-social:hover {
+      background: #fff;
+      color: #181818;
+      box-shadow: 0 0 18px 0 #fff8, 0 2px 8px #fff4;
+    }
+    @media (max-width: 600px) {
+      .contact-card { max-width: 98vw; padding: 24px 6vw 18px 6vw; }
+    }
+    .home-socials {
+      margin-top: -10px;
+      display: flex;
+      gap: 28px;
+      justify-content: flex-start;
+    }
+    .home-social {
+      color: #fff;
+      background: #181818;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+      box-shadow: 0 2px 8px #fff4;
+      text-decoration: none;
+    }
+    .home-social:hover {
+      background: #fff;
+      color: #181818;
+      transform: scale(1.13);
+      box-shadow: 0 0 18px 0 #fff8, 0 2px 8px #fff4;
+    }
+  </style>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <canvas class="dots-bg"></canvas>
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#songs">Popular Song</a></li>
+      <li><a href="#shows">Gallery</a></li>
+      <li><a href="#follow">Follow on</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- Home Section -->
+  <section id="home">
+    <div class="container">
+      <div class="left">
+        <div class="artist-name">Dileepa Madushan</div>
+        <div class="stage-name">DILU BEATS</div>
+        <div class="desc">Sri Lankan Music Producer | Beat Maker | Artist</div>
+        <div class="btn-group">
+          <a href="#" class="btn"><i class="fas fa-bolt"></i> Latest Release</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-music"></i> All Tracks</a>
+        </div>
+        <div class="home-socials">
+          <a href="https://music.apple.com/lk/artist/dilu-beats/1554646944" class="home-social" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          <a href="https://youtube.com/@dilubeats?si=g7wg8kLheIm1vUPG" class="home-social" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+          <a href="https://open.spotify.com/artist/01O8OueZDiqUJjOu7XPb4t?si=twqjybwZTWu8k0VP4pc6fQ" class="home-social" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+          <a href="https://www.instagram.com/dilu.beats?igsh=emtwMzdjOWU1bmZ5" class="home-social" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/18ox5wcBgv/?mibextid=wwXIfr" class="home-social" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="image-pro-wrapper">
+          <img src="490597285_1412851816797495_1877331032924467265_n.jpg" alt="Dilu Beats" />
+        </div>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-scroll">
+      <div class="about-main-container">
+        <div class="about-img-box">
+          <img src="490461213_1414194019996608_853172407328157649_n.jpg" alt="Dilu Beats Performing" />
+        </div>
+        <div class="about-main-content">
+          <div class="about-main-title">More About Me</div>
+          <div class="about-main-intro">
+            <span class="about-main-highlight">"DILU BEATS"</span> (Dileepa Madushan) is one of the most influential music producers in the current Sri Lankan music scene, bringing authentic beats and production from Sri Lanka to the global stage.
+          </div>
+          <div class="about-main-desc">
+            Rising from humble beginnings in Sri Lanka, Dilu Beats has revolutionized the local music scene with his unique blend of traditional Sri Lankan elements and modern production techniques. His authentic sound and powerful beats resonate with artists and audiences across generations.
+          </div>
+          <div class="about-main-stats">
+            <div class="about-main-stat">
+              <div class="stat-number" data-target="500000">0</div>
+              <div class="stat-label">Monthly Listeners</div>
+            </div>
+            <div class="about-main-stat">
+              <div class="stat-number" data-target="50000000">0</div>
+              <div class="stat-label">Total Views</div>
+            </div>
+            <div class="about-main-stat">
+              <div class="stat-number" data-target="100">0</div>
+              <div class="stat-label">Live Shows</div>
+            </div>
+          </div>
+          <div class="about-main-body">
+            Known for producing hits like "Numba Ha" and "Neth Manema", Dilu Beats' music combines hard-hitting beats with melodic elements from traditional Sri Lankan music. His production style has become a signature sound in the Sri Lankan music industry.
+          </div>
+          <div class="about-main-footer">
+            Beyond music production, he's become a mentor for aspiring producers, using his platform to inspire and advocate for positive change in the music industry. His journey from local producer to national recognition serves as an inspiration for aspiring artists across the country.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Popular Song Section -->
+  <section id="songs">
+    <div class="section-title popular-animate" style="justify-content: center; text-align: center;">
+      <i class="fas fa-music" style="color: #fff; margin-right: 10px;"></i> Popular Song
+      <span class="popular-underline" style="margin-left: 0; display: block; margin: 8px auto 0 auto;"></span>
+    </div>
+    <div class="popular-grid">
+      <!-- Card 1 -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/ky-V1PQ6jh8-HD.jpg" alt="Numba Ha" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Numba Ha</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/album/2UpdfQtZJ1YwrgHmvVArcx?si=dtF1cPkNQSSV8gB6CcvaFA" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/ky-V1PQ6jh8?si=C-JNzveD287Jw_oZ" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/numba-ha/1668788659?i=1668788664" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/1frt1f74dJ8-HD.jpg" alt="Neth Manema" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Neth Manema</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/track/288avMdGyHT0lzoX3LkQmX?si=VTR0-M6RRviDt0UlyIjnxA" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/1frt1f74dJ8?si=n4ol0YFLxxsFwxj0" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/urujual/1645395945?i=1645396066" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/2.jpg" alt="Numbawa Soya" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Numbawa Soya</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/track/27Qm3qTgGdwjE6hyBcH2Tt?si=H8b9C0fpTim1t0uPV2b7Cg" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/kcw4DJKJZnc?si=WEquA6ef9V1gWxGR" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/visabjay/1707347911?i=1707347915" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/3.jpg" alt="Dase Durin" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Dase Durin</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/track/0B0mzxW4kxnoeApvfwCT5u?si=g0Qn9r41THmL80ILJFsB1w" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/dZPIWtszAgY?si=HuaxRIeijFi1yRqA" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/jadi-mudi/1656380753?i=1656380764" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/4.jpg" alt="Mawila" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Mawila</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/track/0nCWDk90WFMcR24T494MYy?si=Ws5HVlNmR-OSSgMaecd6wg" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/f3skwtbANB8?si=n0OYxm1zDwPEUkUq" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/neranjana/1645558446?i=1645558610" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6: Handa Gawin -->
+      <div class="popular-card popular-animate">
+        <img src="thumbnail/5.jpg" alt="Handa Gawin" class="popular-img" />
+        <div class="popular-info">
+          <div class="popular-title-main">Dilu Beats - Handa Gawin</div>
+          <div class="popular-icons">
+            <a href="https://open.spotify.com/track/4R2xhVHmdz4vD2WSJFKKeT?si=Q85VAwhET06bcUUsNymv4w" class="popular-icon popular-icon-spotify" title="Spotify" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtu.be/jxYSvN6bexk?si=3vdM_jTPu56MpgAO" class="popular-icon popular-icon-yt" title="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.apple.com/lk/album/santhosey-single/1645390116" class="popular-icon popular-icon-apple" title="Apple Music" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Latest Shows Section -->
+  <section id="shows">
+    <div class="section-title" style="justify-content: center; text-align: center;">Gallery
+      <span class="popular-underline" style="margin-left: 0; display: block; margin: 8px auto 0 auto;"></span>
+    </div>
+    <div class="shows-grid">
+      <div class="shows-card"><img src="Gallery/1.jpg" alt="Gallery 1"></div>
+      <div class="shows-card"><img src="Gallery/2.jpg" alt="Gallery 2"></div>
+      <div class="shows-card"><img src="Gallery/3.jpg" alt="Gallery 3"></div>
+      <div class="shows-card"><img src="Gallery/4.jpg" alt="Gallery 4"></div>
+      <div class="shows-card"><img src="Gallery/5.jpg" alt="Gallery 5"></div>
+      <div class="shows-card"><img src="Gallery/6.jpg" alt="Gallery 6"></div>
+      <div class="shows-card"><img src="Gallery/7.jpg" alt="Gallery 7"></div>
+      <div class="shows-card"><img src="Gallery/8.jpg" alt="Gallery 8"></div>
+    </div>
+  </section>
+  <!-- Follow On Section -->
+  <section id="follow">
+    <div class="section-title" style="justify-content: center; text-align: center;">Follow on
+      <span class="popular-underline" style="margin-left: 0; display: block; margin: 8px auto 0 auto;"></span>
+    </div>
+    <div class="follow-grid">
+      <a href="https://open.spotify.com/artist/01O8OueZDiqUJjOu7XPb4t?si=twqjybwZTWu8k0VP4pc6fQ" class="follow-card follow-spotify">
+        <i class="fab fa-spotify"></i>
+        <div class="follow-title">Spotify</div>
+        <div class="follow-desc">Stream My Music</div>
+      </a>
+      <a href="https://youtube.com/@dilubeats?si=g7wg8kLheIm1vUPG" class="follow-card follow-youtube">
+        <i class="fab fa-youtube"></i>
+        <div class="follow-title">YouTube</div>
+        <div class="follow-desc">Watch My Videos</div>
+      </a>
+      <a href="https://music.apple.com/lk/artist/dilu-beats/1554646944" class="follow-card follow-apple">
+        <i class="fab fa-apple"></i>
+        <div class="follow-title">Apple Music</div>
+        <div class="follow-desc">Listen on Apple Music</div>
+      </a>
+      <a href="https://www.instagram.com/dilu.beats?igsh=emtwMzdjOWU1bmZ5" class="follow-card follow-instagram">
+        <i class="fab fa-instagram"></i>
+        <div class="follow-title">Instagram</div>
+        <div class="follow-desc">Follow My Journey</div>
+      </a>
+      <a href="https://www.facebook.com/share/18ox5wcBgv/?mibextid=wwXIfr" class="follow-card follow-facebook">
+        <i class="fab fa-facebook"></i>
+        <div class="follow-title">Facebook</div>
+        <div class="follow-desc">Stay Connected</div>
+      </a>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-title" style="justify-content: center; text-align: center;">Get In Touch
+      <span class="popular-underline" style="margin-left: 0; display: block; margin: 8px auto 0 auto;"></span>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon"><i class="fas fa-paper-plane"></i></div>
+      <div class="contact-title">Let's Connect</div>
+      <div class="contact-desc">Feel free to reach out for collaborations, bookings, or just to say hello!</div>
+      <a href="mailto:dileepamadushdh@gmail.com" class="contact-email">dileepamadushdh@gmail.com</a>
+      <div class="contact-socials">
+        <a href="https://www.instagram.com/dilu.beats?igsh=emtwMzdjOWU1bmZ5" class="contact-social" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/18ox5wcBgv/?mibextid=wwXIfr" class="contact-social" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/@dilubeats?si=g7wg8kLheIm1vUPG" class="contact-social" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a href="https://open.spotify.com/artist/01O8OueZDiqUJjOu7XPb4t?si=twqjybwZTWu8k0VP4pc6fQ" class="contact-social" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a href="https://music.apple.com/lk/artist/dilu-beats/1554646944" class="contact-social" target="_blank" rel="noopener"><i class="fab fa-apple"></i></a>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Navigation smooth scroll
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Highlight nav link for current section
+    const sectionIds = ['home', 'about', 'songs', 'shows', 'follow', 'contact'];
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    function highlightNav() {
+      let scrollPos = window.scrollY || window.pageYOffset;
+      let winH = window.innerHeight;
+      let found = false;
+      for (let i = 0; i < sectionIds.length; i++) {
+        const sec = document.getElementById(sectionIds[i]);
+        if (!sec) continue;
+        const rect = sec.getBoundingClientRect();
+        const top = rect.top + scrollPos;
+        const bottom = top + sec.offsetHeight;
+        if (scrollPos + winH/2 >= top && scrollPos + winH/2 < bottom) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          navLinks[i].classList.add('active');
+          found = true;
+          break;
+        }
+      }
+      if (!found) navLinks.forEach(l => l.classList.remove('active'));
+    }
+    window.addEventListener('scroll', highlightNav);
+    window.addEventListener('resize', highlightNav);
+    window.addEventListener('DOMContentLoaded', highlightNav);
+
+    // Animated Dots Background
+    const canvas = document.querySelector('.dots-bg');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    function resizeCanvas() {
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w; canvas.height = h;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    // Dots grid
+    function makeDots() {
+      dots = [];
+      for(let y=0; y<h+40; y+=40) {
+        for(let x=0; x<w+40; x+=40) {
+          dots.push({x, y, phase: Math.random()*Math.PI*2});
+        }
+      }
+    }
+    let dots = [];
+    makeDots();
+    window.addEventListener('resize', makeDots);
+    function animateDots(ts) {
+      ctx.clearRect(0,0,w,h);
+      for(const dot of dots) {
+        let offset = Math.sin(ts/700 + dot.phase)*2;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y+offset, 2.2, 0, Math.PI*2);
+        ctx.fillStyle = '#222';
+        ctx.globalAlpha = 0.7;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      requestAnimationFrame(animateDots);
+    }
+    animateDots(0);
+
+    // Pop-up animation for Popular Song section
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('popular-inview');
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.popular-animate').forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+    // Animated Counter for About Stats
+    function animateCount(el, target, duration = 2000) {
+      let start = 0;
+      let startTime = null;
+      function updateCount(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = Math.floor(progress * (target - start) + start);
+        el.textContent = target >= 1000000 ? (value/1000000).toFixed(1) + 'M+' :
+                        target >= 1000 ? (value/1000).toFixed(0) + 'K+' : value + '+';
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          el.textContent = target >= 1000000 ? (target/1000000).toFixed(1) + 'M+' :
+                          target >= 1000 ? (target/1000).toFixed(0) + 'K+' : target + '+';
+        }
+      }
+      requestAnimationFrame(updateCount);
+    }
+    function handleAboutStats() {
+      const stats = document.querySelectorAll('.stat-number');
+      stats.forEach(stat => {
+        if (!stat.dataset.animated) {
+          animateCount(stat, parseInt(stat.dataset.target));
+          stat.dataset.animated = 'true';
+        }
+      });
+    }
+    // Use IntersectionObserver for better scroll trigger
+    const aboutSection = document.getElementById('about');
+    let aboutStatsAnimated = false;
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !aboutStatsAnimated && entry.intersectionRatio > 0.6) {
+          handleAboutStats();
+          aboutStatsAnimated = true;
+          observer.disconnect();
+        }
+      });
+    }, { threshold: [0, 0.6, 1] });
+    observer.observe(aboutSection);
+  </script>
+</body>
+</html> 
